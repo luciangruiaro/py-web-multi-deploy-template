@@ -10,9 +10,10 @@ function callGet() {
 }
 
 function callPost() {
-    const payload = {
-        user_input: document.getElementById("postData").value
-    };
+    const name = document.getElementById("nameInput").value;
+    const age = parseInt(document.getElementById("ageInput").value);
+
+    const payload = {name, age};
 
     fetch("/hello", {
         method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)

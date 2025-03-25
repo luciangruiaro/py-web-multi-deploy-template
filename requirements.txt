@@ -1,6 +1,9 @@
-flask
-fastapi
-uvicorn[standard]
+flask~=3.1.0
+fastapi~=0.115.12
+uvicorn[standard]~=0.34.0
 gunicorn
-pyyaml
+pyyaml~=6.0.2
 pyinstaller
+
+pydantic~=2.10.6
+schemas~=0.7.1

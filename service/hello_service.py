@@ -7,7 +7,7 @@ class HelloService:
         self.constants = config.get("constants", {})
 
     def say_hello(self):
-        self.logger.info("Processing GET /hello")
+        self.logger.debug("Processing GET /hello")
         return {"greeting": self.constants.get("greeting_message", "Hello!")}
 
     def process_data(self, data):

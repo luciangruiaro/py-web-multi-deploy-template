@@ -1,7 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
+from api.schemas.hello_schema import HelloRequestModel
 from service.hello_service import HelloService
 from helpers.utils import format_response
 
@@ -20,11 +22,18 @@ def create_fastapi_app(config):
 
     @app.get("/hello")
     async def hello_get():
-        return JSONResponse(content=format_response("Hello GET", hello_service.say_hello()))
+        try:
+            result = hello_service.say_hello()
+            return JSONResponse(content=format_response("Hello GET", result))
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
 
     @app.post("/hello")
-    async def hello_post(request: Request):
-        data = await request.json()
-        return JSONResponse(content=format_response("Hello POST", hello_service.process_data(data)))
+    async def hello_post(data: HelloRequestModel):
+        try:
+            result = hello_service.process_data(data.dict())
+            return JSONResponse(content=format_response("Hello POST", result))
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
 
     return app
