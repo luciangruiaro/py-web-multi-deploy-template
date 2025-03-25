@@ -2,7 +2,7 @@ import os
 import ollama
 from openai import OpenAI
 from helpers.logger import setup_logger
-from integrations.memory import AgentMemory
+from integrations.llm.memory import AgentMemory
 
 LLM_API_KEY = os.getenv("OPENAI_API_KEY")
 

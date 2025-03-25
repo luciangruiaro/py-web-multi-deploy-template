@@ -1,5 +1,5 @@
 from helpers.logger import setup_logger
-from integrations.llm_interface import LLMClient
+from integrations.llm.llm_interface import LLMClient
 
 
 class HelloService:
