@@ -1,0 +1,6 @@
+flask
+fastapi
+pyyaml
+uvicorn[standard]
+gunicorn
+pyinstaller

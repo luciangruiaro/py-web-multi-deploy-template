@@ -1,0 +1,8 @@
+app:
+  name: "MyApp"
+  version: "1.0"
+  debug: true
+  port: 5000
+
+logging:
+  level: "INFO"
