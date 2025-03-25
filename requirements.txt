@@ -7,3 +7,6 @@ pyinstaller
 
 pydantic~=2.10.6
 schemas~=0.7.1
+
+ollama
+openai

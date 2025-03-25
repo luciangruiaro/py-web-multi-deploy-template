@@ -1,6 +1,5 @@
-framework: flask
-#framework: fastapi
-
+framework: fastapi
+#framework: flask
 
 app:
   name: "Py Multi Mode App Template"
@@ -14,3 +13,11 @@ constants:
 
 logging:
   level: "INFO"
+
+llm_config:
+  provider: "openai" # or "ollama"
+  model: "gpt-4o" # or "llama3"
+  temperature: 0.7
+  context_window: 1000
+  include_history: true
+  history_length: 10
