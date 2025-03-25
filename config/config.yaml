@@ -1,8 +1,16 @@
+framework: flask
+#framework: fastapi
+
+
 app:
-  name: "MyApp"
-  version: "1.0"
+  name: "Py Multi Mode App Template"
+  version: "1.0.0"
   debug: true
   port: 5000
+
+constants:
+  greeting_message: "Hello, user!"
+  post_ack: "Data received successfully."
 
 logging:
   level: "INFO"
