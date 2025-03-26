@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
+from fastapi.middleware.cors import CORSMiddleware
 from api.schemas.hello_schema import HelloRequestModel
 from service.hello_service import HelloService
 from helpers.utils import format_response
@@ -11,6 +11,7 @@ from helpers.utils import format_response
 def create_fastapi_app(config):
     app = FastAPI()
     app.state.config = config
+    cors_setup(app)
 
     hello_service = HelloService(config)
     templates = Jinja2Templates(directory='templates')
@@ -37,3 +38,13 @@ def create_fastapi_app(config):
             raise HTTPException(status_code=500, detail=str(e))
 
     return app
+
+
+def cors_setup(app):
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["http://localhost:8080"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
